@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+{%extends 'layout.html' %}
+
+{% block title %}Lemonaty_login{% endblock %}
+
+
+{% block content%}
+<!-- Content -->
+	<section>
+        <form method="POST">
+            {% for field in form %}
+
+            <h3>{{field.label}}:{{field}}</h3>
+
+            {% endfor %}
+            <button> Ok </button>
+        </form>
+
+	</section>
+{% endblock %}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+{%extends 'layout.html' %}
+
+{% block title %}Lemonaty_Lemonades{% endblock %}
+
+
+{% block content%}
+<!-- Content -->
+	<section>
+        <div class = 'row row-cols-3'>
+            {% for item in pagination %}
+            <header class="main">
+                <h3>{{item.place}}</h3>
+            </header>
+
+            <p>{{item.description}}</p>
+            <li><a href="{{item.id}}" class="button primary">More</a></li>
+            {% endfor %}
+        </div>>
+
+          <div class=page-items>
+            {{ pagination.first }} - {{ pagination.last }} of {{ pagination.total }}
+          </div>
+          <div class=pagination>
+            {% for page in pagination.iter_pages() %}
+              {% if page %}
+                {% if page != pagination.page %}
+                  <a href="{{ url_for('generic0', page=page) }}">{{ page }}</a>
+                {% else %}
+                  <strong>{{ page }}</strong>
+                {% endif %}
+              {% else %}
+                <span class=ellipsis>…</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+	</section>
+{% endblock %}
+
